@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomTile : MonoBehaviour
 {
     [SerializeField] GameObject borderOverlay;
     [SerializeField] GameObject tileOverlay;
-    [SerializeField] PlayerData Owner;  // Reference to the owner
+    [SerializeField] PlayerData owner;  // Reference to the owner
     [HideInInspector] public Vector2Int coordinate;
     [HideInInspector] public Vector3Int cubeCoordinate;
 
@@ -15,24 +14,22 @@ public class CustomTile : MonoBehaviour
     }
 
     // Method to update the tile's owner
-    public void SetOwner(PlayerData newOwner)
+    public bool SetOwner(PlayerData newOwner)
     {
-        Owner = newOwner;
+        if (newOwner == owner)
+        return false; // Already owned by this player
+
+        bool isFirstTimeClaimed = owner == null; // To awoid adding the same tile if it was claimed by diffrent player
+
+        owner = newOwner;
         borderOverlay.SetActive(true);
-        borderOverlay.GetComponent<SpriteRenderer>().color = Owner.nationColor; // Change the color to represent the owner
+        borderOverlay.GetComponent<SpriteRenderer>().color = owner.nationColor;
+
+        return isFirstTimeClaimed;
     }
-    private void OnMouseEnter()
+    public void ShowOverlay(bool show)
     {
-        tileOverlay.SetActive(true);
-    }
-    private void OnMouseExit()
-    {
-        tileOverlay.SetActive(false);
-    }
-    private void OnMouseDown()
-    {
-        SetOwner(PlayerManager.Instance.GetCurrentPlayer());
-        PlayerManager.Instance.AddTileToPlayerList(this);
+        tileOverlay.SetActive(show);
     }
 }
 
