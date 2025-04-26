@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.42f1
+CRC: 1521215546
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9976b3c9e674eedf44b71d2ca81a10da
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f3b4a9135895c93f5ea31df76fa69a2d
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 792aca6e849319c2f75cc2cb5ad95e9d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 60
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 91790fdb3c462d94699a7a2562e0e2e0, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: PlayerData
+Assets:
+- Assets/Prefabs/Tiles/DesertHex.prefab
+Dependencies: []
