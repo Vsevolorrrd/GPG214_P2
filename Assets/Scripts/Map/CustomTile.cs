@@ -7,6 +7,7 @@ public class CustomTile : MonoBehaviour
     [SerializeField] PlayerData owner;  // Reference to the owner
     [HideInInspector] public Vector2Int coordinate;
     [HideInInspector] public Vector3Int cubeCoordinate;
+    private bool isClaimed = false;
 
     private void Start()
     {
@@ -17,15 +18,16 @@ public class CustomTile : MonoBehaviour
     public bool SetOwner(PlayerData newOwner)
     {
         if (newOwner == owner)
-        return false; // Already owned by this player
+            return false;// Already owned by this player
 
-        bool isFirstTimeClaimed = owner == null; // To awoid adding the same tile if it was claimed by diffrent player
+        bool wasUnclaimed = !isClaimed;// To awoid adding the same tile if it was claimed by diffrent player
 
         owner = newOwner;
+        isClaimed = true;
         borderOverlay.SetActive(true);
         borderOverlay.GetComponent<SpriteRenderer>().color = owner.nationColor;
 
-        return isFirstTimeClaimed;
+        return wasUnclaimed;
     }
     public void ShowOverlay(bool show)
     {
